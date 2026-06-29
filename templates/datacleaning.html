@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <title>Data Cleaning</title>
+</head>
+<body>
+
+    <div class="sidebar">
+
+    <div class="logo">
+        <i class="fas fa-dumbbell"></i>
+        <span>Track</span>
+    </div>
+
+    <a href="{{ url_for('home') }}" class="nav-icon">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+    </a>
+
+    <a href="{{ url_for('dashboard') }}" class="nav-icon">
+        <i class="fas fa-database"></i>
+        <span>Data</span>
+    </a>
+
+    <a href="{{ url_for('datacleaning') }}" class="nav-icon active">
+        <i class="fas fa-broom"></i>
+        <span>Data Cleaning</span>
+    </a>
+
+    <a href="{{ url_for('analytics') }}" class="nav-icon">
+        <i class="fas fa-chart-line"></i>
+        <span>Analytics</span>
+    </a>
+
+    <a href="{{ url_for('visuals') }}" class="nav-icon">
+        <i class="fas fa-chart-pie"></i>
+        <span>Charts</span>
+    </a>
+
+</div>
+
+<div class="main-content">
+
+    <!-- SUMMARY CARDS -->
+
+    <div class="card">
+
+        <h2>Cleaned Dataset Dashboard</h2>
+
+        <div class="dashboard-grid">
+
+        <div class="card">
+            <h3>Cleaned Records</h3>
+            <h1>{{ rows }}</h1>
+        </div>
+
+        <div class="card">
+            <h3>Features</h3>
+            <h1>{{ columns }}</h1>
+        </div>
+
+        <div class="card">
+            <h3>Missing Values</h3>
+            <h1>{{ missing_values }}</h1>
+        </div>
+
+        <div class="card">
+            <h3>Duplicate Records</h3>
+            <h1>{{ duplicates }}</h1>
+        </div>
+
+    </div>
+
+    </div>
+
+    <!-- CLEANING OPERATIONS -->
+
+    <div class="card">
+
+    <h2>Cleaning Operations Performed</h2>
+
+    <div class="operations-grid">
+
+        <div class="operation-box">
+            <i class="fas fa-trash"></i>
+            <span>Removed Missing Values</span>
+        </div>
+
+        <div class="operation-box">
+            <i class="fas fa-copy"></i>
+            <span>Removed Duplicates</span>
+        </div>
+
+        <div class="operation-box">
+            <i class="fas fa-font"></i>
+            <span>Standardized Text</span>
+        </div>
+
+        <div class="operation-box">
+            <i class="fas fa-broom"></i>
+            <span>Cleaned Invalid Characters</span>
+        </div>
+
+        <div class="operation-box">
+            <i class="fas fa-columns"></i>
+            <span>Renamed Columns</span>
+        </div>
+
+        <div class="operation-box">
+            <i class="fas fa-exchange-alt"></i>
+            <span>Converted Data Types</span>
+        </div>
+
+        <div class="operation-box">
+            <i class="fas fa-filter"></i>
+            <span>Filtered Invalid Values</span>
+        </div>
+
+        <div class="operation-box">
+            <i class="fas fa-chart-line"></i>
+            <span>Removed Outliers (IQR)</span>
+        </div>
+
+    </div>
+
+</div>
+
+    <!-- CLEANING RESULTS -->
+
+    <div class="card">
+
+    <h2>Cleaning Results</h2>
+
+    <div class="results-table-wrapper">
+
+        <table class="results-table">
+
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Before Cleaning</th>
+                    <th>After Cleaning</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Total Records</td>
+                    <td>1800</td>
+                    <td>{{ rows }}</td>
+                </tr>
+
+                <tr>
+                    <td>Rows Removed</td>
+                    <td>-</td>
+                    <td>513</td>
+                </tr>
+
+                <tr>
+                    <td>Missing Values</td>
+                    <td>29</td>
+                    <td>0</td>
+                </tr>
+
+                <tr>
+                    <td>Duplicate Records</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+
+                <tr>
+                    <td>Total Columns</td>
+                    <td>15</td>
+                    <td>15</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+    <!-- CLEANED DATASET -->
+
+    <div class="card">
+
+        <h2>Cleaned Dataset Preview</h2>
+
+        <p>
+            First ten records after applying all cleaning and preprocessing operations.
+        </p>
+
+        <div class="table-container">
+
+            {{ cleaned_table | safe }}
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

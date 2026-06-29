@@ -1,1 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracker Analytics</title>
 
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Your CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+   <div class="sidebar">
+
+    <div class="logo">
+        <i class="fas fa-dumbbell"></i>
+        <span>Track</span>
+    </div>
+
+    <a href="{{ url_for('home') }}" class="nav-icon active">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+    </a>
+
+    <a href="{{ url_for('dashboard') }}" class="nav-icon">
+        <i class="fas fa-database"></i>
+        <span>Data</span>
+    </a>
+
+    <a href="{{ url_for('datacleaning') }}" class="nav-icon">
+        <i class="fas fa-broom"></i>
+        <span>Data Cleaning</span>
+    </a>
+
+    <a href="{{ url_for('analytics') }}" class="nav-icon">
+        <i class="fas fa-chart-line"></i>
+        <span>Analytics</span>
+    </a>
+
+    <a href="{{ url_for('visuals') }}" class="nav-icon">
+        <i class="fas fa-chart-pie"></i>
+        <span>Charts</span>
+    </a>
+
+</div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+    <!-- HERO -->
+
+    <div class="card hero-card">
+
+        <h1>Fitness Tracker Health Analytics</h1>
+
+        <p>
+            A data analytics dashboard that explores
+            fitness habits, workout performance, calorie expenditure,
+            and health metrics using a Gym Members Exercise Tracking Dataset.
+        </p>
+
+    </div>
+
+    <!-- PROJECT OVERVIEW -->
+
+    <div class="card">
+
+        <h2>Project Overview</h2>
+
+        <p>
+            A web-based analytics dashboard designed to explore fitness,
+        exercise, and health-related data. The system applies data
+        cleaning, statistical analysis, and visualization techniques
+        to uncover meaningful insights from fitness tracker records.
+        </p>
+
+    </div>
+
+    <!-- PROJECT OBJECTIVES -->
+
+    <div class="card">
+
+    <h2>Project Objectives</h2>
+
+    <div class="objective-section">
+
+        <h3>General Objective</h3>
+
+        <p>
+            To analyze health-related data from the fitness tracker dataset
+            using data analytics techniques in order to identify patterns,
+            relationships, and potential health risks associated with key
+            health indicators.
+        </p>
+
+    </div>
+
+    <div class="objective-section">
+
+        <h3>Specific Objectives</h3>
+
+        <div class="objectives-grid">
+
+            <div class="objective-item">
+                Clean the fitness tracker dataset by handling missing values,
+                inconsistencies, and data quality issues.
+            </div>
+
+            <div class="objective-item">
+                Analyze the distribution and trends of key health indicators
+                such as BMI, body fat percentage, heart rate, and physical
+                activity levels.
+            </div>
+
+            <div class="objective-item">
+                Examine relationships among key health indicators and determine
+                how they contribute to an individual's overall health status.
+            </div>
+
+            <div class="objective-item">
+                Provide insights and interpretations that can assist individuals
+                in monitoring and evaluating their general health condition.
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <title>Dashboard</title>
+
+</head>
+<body>
+
+    <div class="sidebar">
+
+    <div class="logo">
+        <i class="fas fa-dumbbell"></i>
+        <span>Track</span>
+    </div>
+
+    <a href="{{ url_for('home') }}" class="nav-icon">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+    </a>
+
+    <a href="{{ url_for('dashboard') }}" class="nav-icon active">
+        <i class="fas fa-database"></i>
+        <span>Data</span>
+    </a>
+
+    <a href="{{ url_for('datacleaning') }}" class="nav-icon">
+        <i class="fas fa-broom"></i>
+        <span>Data Cleaning</span>
+    </a>
+
+    <a href="{{ url_for('analytics') }}" class="nav-icon">
+        <i class="fas fa-chart-line"></i>
+        <span>Analytics</span>
+    </a>
+
+    <a href="{{ url_for('visuals') }}" class="nav-icon">
+        <i class="fas fa-chart-pie"></i>
+        <span>Charts</span>
+    </a>
+
+</div>
+
+    <div class="main-content">
+
+        <div class="card">
+
+            <h2>Dataset Dashboard</h2>
+
+            <div class="info-grid">
+
+                <div class="info-box">
+                    <h3>Dataset Name</h3>
+                    <p>{{ dataset_name }}</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>Source</h3>
+                    <p>{{ dataset_source }}</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>Total Records</h3>
+                    <p>{{ rows }}</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>Total No. of Columns</h3>
+                    <p>{{ columns }}</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Raw Dataset Preview</h2>
+
+            <p>
+                Here are the first 10 rows of the dataset acquired.
+            </p>
+
+            <div class="table-container">
+                {{ table | safe }}
+            </div>
+
+        </div>
+
+    <div class="card">
+
+    <h2>Column Information</h2>
+
+    <p>
+        Description of each column featured in the Fitness Tracker dataset.
+    </p>
+
+    <div class="column-grid">
+
+        <div class="column-item">
+            <h3>Age</h3>
+            <p>Age of the individual in years.</p>
+        </div>
+
+        <div class="column-item">
+            <h3>Gender</h3>
+            <p>Gender of the individual.</p>
+        </div>
+
+        <div class="column-item">
+            <h3>Weight</h3>
+            <p>Weight of the individual in kilograms.</p>
+        </div>
+
+        <div class="column-item">
+            <h3>Height</h3>
+            <p>Height of the individual in meters.</p>
+        </div>
+
+        <div class="column-item">
+            <h3>Max BPM</h3>
+            <p>Maximum heartbeats per minute recorded during exercise.</p>
+        </div>
+
+        <div class="column-item">
+            <h3>Avg BPM</h3>
+            <p>Average heartbeats per minute during a workout session.</p>
+        </div>
+
+        <div class="column-item">
+            <h3>Resting BPM</h3>
+            <p>Resting heartbeats per minute.</p>
+        </div>
+
+        <div class="column-item">
+            <h3>Session Duration</h3>
+            <p>Duration of the workout session in hours.</p>
+        </div>
+
+        <div class="column-item">
+            <h3>Calories Burned</h3>
+            <p>Total calories burned during a workout session.</p>
+        </div>
+
+        <div class="column-item">
+            <h3>Workout Type</h3>
+            <p>Type of workout performed.</p>
+        </div>
+
+        <div class="column-item">
+            <h3>Fat Percentage</h3>
+            <p>Percentage of body fat.</p>
+        </div>
+
+        <div class="column-item">
+            <h3>Water Intake</h3>
+            <p>Water intake in liters during or after the workout.</p>
+        </div>
+
+        <div class="column-item">
+            <h3>Workout Frequency</h3>
+            <p>Number of days per week the individual exercises.</p>
+        </div>
+
+        <div class="column-item">
+            <h3>Experience Level</h3>
+            <p>Level of fitness experience.</p>
+        </div>
+
+        <div class="column-item">
+            <h3>BMI</h3>
+            <p>Body Mass Index calculated as weight ÷ height².</p>
+        </div>
+
+    </div>
+
+    </div>
+
+</body>
+</html>
