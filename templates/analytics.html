@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <title>Analytics</title>
+</head>
+<body>
+
+     <div class="sidebar">
+
+    <div class="logo">
+        <i class="fas fa-dumbbell"></i>
+        <span>Track</span>
+    </div>
+
+    <a href="{{ url_for('home') }}" class="nav-icon">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+    </a>
+
+    <a href="{{ url_for('dashboard') }}" class="nav-icon">
+        <i class="fas fa-database"></i>
+        <span>Data</span>
+    </a>
+
+    <a href="{{ url_for('datacleaning') }}" class="nav-icon">
+        <i class="fas fa-broom"></i>
+        <span>Data Cleaning</span>
+    </a>
+
+    <a href="{{ url_for('analytics') }}" class="nav-icon active">
+        <i class="fas fa-chart-line"></i>
+        <span>Analytics</span>
+    </a>
+
+    <a href="{{ url_for('visuals') }}" class="nav-icon">
+        <i class="fas fa-chart-pie"></i>
+        <span>Charts</span>
+    </a>
+
+
+</div>
+
+<div class="main-content">
+
+    <!-- SUMMARY DASHBOARD -->
+    <div class="section-card">
+
+        <h2 class="analytics-title">Analytics Dashboard</h2>
+
+        <div class="analytics-grid">
+
+            <div class="card">
+                <h3>Total Participants</h3>
+                <h2>{{ analytics.total_users }}</h2>
+            </div>
+
+            <div class="card">
+                <h3>Average BMI</h3>
+                <h2>{{ analytics.avg_bmi }}</h2>
+            </div>
+
+            <div class="card">
+                <h3>Average Calories Burned</h3>
+                <h2>{{ analytics.avg_calories }}</h2>
+            </div>
+
+            <div class="card">
+                <h3>Most Common Workout</h3>
+                <h2>{{ analytics.common_workout }}</h2>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- DESCRIPTIVE STATISTICS -->
+    <div class="section-card">
+
+        <h2 class="analytics-title">
+            Descriptive Statistics
+        </h2>
+
+        <div class="card full-width">
+
+            <table class="stats-table">
+
+                <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Mean</th>
+                        <th>Median</th>
+                        <th>Mode</th>
+                        <th>Std. Dev.</th>
+                        <th>CV (%)</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>BMI</td>
+                        <td>{{ analytics.bmi_mean }}</td>
+                        <td>{{ analytics.bmi_median }}</td>
+                        <td>{{ analytics.bmi_mode }}</td>
+                        <td>{{ analytics.bmi_sd }}</td>
+                        <td>{{ analytics.bmi_cv }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Calories Burned</td>
+                        <td>{{ analytics.calories_mean }}</td>
+                        <td>{{ analytics.calories_median }}</td>
+                        <td>{{ analytics.calories_mode }}</td>
+                        <td>{{ analytics.calories_sd }}</td>
+                        <td>{{ analytics.calories_cv }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Resting BPM</td>
+                        <td>{{ analytics.resting_mean }}</td>
+                        <td>{{ analytics.resting_median }}</td>
+                        <td>{{ analytics.resting_mode }}</td>
+                        <td>{{ analytics.resting_sd }}</td>
+                        <td>{{ analytics.resting_cv }}</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- ADVANCED DESCRIPTIVE STATISTICS -->
+
+    <div class="section-card">
+
+        <h2 class="analytics-title">
+            Advanced Descriptive Statistics
+        </h2>
+
+            <div class="card full-width">
+
+                <table class="stats-table">
+
+                    <thead>
+                        <tr>
+                            <th>Variable</th>
+                            <th>Minimum</th>
+                            <th>Maximum</th>
+                            <th>Range</th>
+                            <th>25th Percentile</th>
+                            <th>75th Percentile</th>
+                            <th>Skewness</th>
+                            <th>Kurtosis</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>BMI</td>
+                            <td>{{ analytics.bmi_min }}</td>
+                            <td>{{ analytics.bmi_max }}</td>
+                            <td>{{ analytics.bmi_range }}</td>
+                            <td>{{ analytics.bmi_p25 }}</td>
+                            <td>{{ analytics.bmi_p75 }}</td>
+                            <td>{{ analytics.bmi_skew }}</td>
+                            <td>{{ analytics.bmi_kurtosis }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Calories Burned</td>
+                            <td>{{ analytics.calories_min }}</td>
+                            <td>{{ analytics.calories_max }}</td>
+                            <td>{{ analytics.calories_range }}</td>
+                            <td>{{ analytics.calories_p25 }}</td>
+                            <td>{{ analytics.calories_p75 }}</td>
+                            <td>{{ analytics.calories_skew }}</td>
+                            <td>{{ analytics.calories_kurtosis }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Resting BPM</td>
+                            <td>{{ analytics.resting_min }}</td>
+                            <td>{{ analytics.resting_max }}</td>
+                            <td>{{ analytics.resting_range }}</td>
+                            <td>{{ analytics.resting_p25 }}</td>
+                            <td>{{ analytics.resting_p75 }}</td>
+                            <td>{{ analytics.resting_skew }}</td>
+                            <td>{{ analytics.resting_kurtosis }}</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+    <!-- STATISTICAL ANALYSIS -->
+    <div class="section-card">
+
+        <h2 class="analytics-title">
+            Statistical Analysis
+        </h2>
+
+        <div class="analytics-grid">
+
+            <div class="card stat-card">
+
+                <h3>Chi-Square Test</h3>
+
+                <p><strong>χ² Value:</strong> {{ analytics.chi_square }}</p>
+                <p><strong>p-value:</strong> {{ analytics.chi_p }}</p>
+
+                <p>
+                    <strong>Status:</strong>
+                    {% if analytics.chi_p < 0.05 %}
+                        Significant
+                    {% else %}
+                        Not Significant
+                    {% endif %}
+                </p>
+
+                <hr>
+
+                <p>
+                    {{ analytics.chi_interpretation }}
+                </p>
+
+            </div>
+
+            <div class="card stat-card">
+
+                <h3>Kruskal-Wallis Test</h3>
+
+                <p><strong>H Value:</strong> {{ analytics.kruskal_h }}</p>
+                <p><strong>p-value:</strong> {{ analytics.kruskal_p }}</p>
+
+                <p>
+                    <strong>Status:</strong>
+                    {% if analytics.kruskal_p < 0.05 %}
+                        Significant
+                    {% else %}
+                        Not Significant
+                    {% endif %}
+                </p>
+
+                <hr>
+
+                <p>
+                    {{ analytics.kruskal_interpretation }}
+                </p>
+
+            </div>
+
+            <div class="card stat-card">
+
+                <h3>BMI vs Body Fat Correlation</h3>
+
+                <p><strong>Correlation (r):</strong> {{ analytics.bmi_fat_r }}</p>
+                <p><strong>p-value:</strong> {{ analytics.bmi_fat_p }}</p>
+
+                <p>
+                    <strong>Strength:</strong>
+                    {{ analytics.correlation_strength }}
+                </p>
+
+                <hr>
+
+                <p>
+                    {{ analytics.correlation_interpretation }}
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- DATASET OVERVIEW -->
+    <div class="section-card">
+
+        <h2 class="analytics-title">
+            Dataset Overview
+        </h2>
+
+        <div class="card full-width">
+
+            <p>
+                Total Participants:
+                <strong>{{ analytics.total_users }}</strong>
+            </p>
+
+            <p>
+                Variables Analyzed:
+                Age, Gender, BMI, Body Fat Percentage,
+                Workout Type, Calories Burned
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- KEY FINDINGS -->
+    <div class="section-card">
+
+        <h2 class="analytics-title">
+            Key Findings
+        </h2>
+
+        <div class="card full-width">
+
+            <ul class="findings-list">
+                {% for finding in analytics.findings %}
+                    <li>{{ finding }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+    
+</body>
+</html>
